@@ -1,0 +1,109 @@
+html{
+  position: relative;
+  box-sizing: border-box;
+  min-height: 100%;
+}
+*, *::before, *::after{
+  box-sizing: inherit;
+}
+.title{
+  margin-bottom: 300px;
+  color: red;
+  text-align: center;
+  font-size: 50px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.open-btn{
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  color: #fff;
+  background-color: red;
+  text-transform: uppercase;
+  font-size: 20px;
+  text-align: center;
+  line-height: 50px;
+  font-weight: 700;
+  width: 150px;
+  height: 50px;
+  border: 1px solid #000;
+  border-radius: 30px;
+  box-shadow: 3px 3px 0 #000;
+  cursor: pointer;
+  overflow: hidden;
+}
+.open-btn::after{
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 0;
+  transform: rotate(-30deg);
+  background-color: #fff;
+  height: 65px;
+  width: 15px;
+  opacity: 0;
+}
+@keyframes btn-animation {
+  0%{
+    left: 0;
+    opacity: 0;
+  }
+  25%{
+    left: 25%;
+    opacity: .5;
+  }
+  50%{
+    left: 50%;
+    opacity: .7;
+  }
+  75%{
+    left: 75%;
+    opacity: .5;
+  }
+  100%{
+    left: 100%;
+    opacity: 0;
+  }
+}
+.open-btn:hover::after{
+  animation-name: btn-animation;
+  animation-duration: .5s;
+  animation-timing-function: linear;
+}
+.open-btn:active{
+  top: 2px;
+  left: 2px;
+  box-shadow: 1px 1px 0 #000;
+}
+.modal{
+  display: none;
+}
+.modal.active{
+  display: block;
+}
+.overlay{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(100,100,100,.5);
+}
+.modal__window{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #fff;
+  width: 500px;
+  min-height: 400px;
+}
+.modal__close-btn{
+  align-self: flex-end;
+  cursor: pointer;
+}
